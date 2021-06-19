@@ -26,6 +26,14 @@ where T : Copy {
     temp
 }
 
+/// ### Selection sort algorithm
+/// 
+/// Worst-case performance:	O(n2) comparisons, O(1) swaps
+/// 
+/// Average performance:    O(n2) comparisons, O(1) swaps
+/// 
+/// Best-case performance:  O(n2) comparisons, O(1) swaps
+/// 
 pub fn sort<T>(array : &mut Vec<T>)
 where T : PartialOrd + Copy {
     let length = array.len();

@@ -40,6 +40,14 @@ where T : Copy + Copy
     }
 }
 
+/// ### Merge sort algorithm
+/// 
+/// Worst-case performance:	O(n log n)
+/// 
+/// Average performance:    O(n log n)
+/// 
+/// Best-case performance:  O(n log n) 
+/// 
 pub fn merge_sort<T>(array : &mut Vec<T>)
 where T : Ord + Copy
 {

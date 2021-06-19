@@ -16,6 +16,14 @@ where T : PartialOrd + Clone {
     }
 }
 
+/// ### Bubble sort algorithm
+/// 
+/// Worst-case performance:	O(n2) comparisons, O(n2) swaps
+/// 
+/// Average performance:    O(n2) comparisons, O(n2) swaps
+/// 
+/// Best-case performance:  O(n) comparisons, O(1) swaps
+/// 
 pub fn sort<T>(array : &mut Vec<T>)
 where T : PartialOrd + Clone {
     let length = array.len();

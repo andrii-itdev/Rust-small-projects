@@ -6,6 +6,7 @@ mod binary_search;
 mod bubble_sort;
 mod insertion_sort;
 mod selection_sort;
+mod quick_sort;
 
 use rand::Rng;
 use std::{fmt::{Debug, Display}, time::Instant, usize};
@@ -15,7 +16,7 @@ use merge_sort::merge_sort as merge_sort;
 use bubble_sort::sort as bubble_sort;
 use insertion_sort::sort as insertion_sort;
 use selection_sort::sort as selection_sort;
-
+use quick_sort::sort as quick_sort;
 
 
 fn get_random_vector(n : usize) -> Vec<usize> {
@@ -88,9 +89,10 @@ fn test_sort_method_for_random_array(f_sort : fn(array : &mut Vec<usize>), num :
 
 fn main() {
 
+    let is_debug_mode = false;
     // Test Sorting algorithms
-    let num : usize = 10000;
-    let print_array = false;
+    let num : usize = if is_debug_mode { 10 } else { 10000 };
+    let print_array = is_debug_mode;
 
     println!("Bubble Sort");
     test_sort_method_for_random_array(bubble_sort, num, print_array);
@@ -100,6 +102,8 @@ fn main() {
     test_sort_method_for_random_array(insertion_sort, num, print_array);
     println!("Selection Sort");
     test_sort_method_for_random_array(selection_sort, num, print_array);
+    println!("Quick Sort");
+    test_sort_method_for_random_array(quick_sort, num, print_array);
 
     // Test Binary search
     let num = 100;

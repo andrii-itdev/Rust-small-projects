@@ -18,6 +18,14 @@ where T : PartialOrd + Copy {
     insert(array, position, i)
 }
 
+/// ### Insertion sort algorithm
+/// 
+/// Worst-case performance:	O(n2) comparisons, swaps
+/// 
+/// Average performance:    O(n2) comparisons, swaps
+/// 
+/// Best-case performance:  O(n) comparisons, O(1) swaps
+/// 
 pub fn sort<T>(array : &mut Vec<T>)
 where T : PartialOrd + Copy {
     let length = array.len();

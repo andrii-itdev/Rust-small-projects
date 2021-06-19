@@ -23,6 +23,14 @@ where T : std::cmp::PartialEq + std::cmp::PartialOrd {
     
 }
 
+/// ### Binary search algorithm
+/// 
+/// Worst-case performance:	O(log n)
+/// 
+/// Average performance:    O(log n)
+/// 
+/// Best-case performance:  O(1)
+/// 
 pub fn search<T>(array : &Vec<T>, what : &T) -> Option<usize>
 where T : std::cmp::PartialEq + std::cmp::PartialOrd {
     if array.len() == 0 {
