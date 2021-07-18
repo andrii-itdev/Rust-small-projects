@@ -7,6 +7,7 @@ mod bubble_sort;
 mod insertion_sort;
 mod selection_sort;
 mod quick_sort;
+mod heap_sort;
 
 use rand::Rng;
 use std::{fmt::{Debug, Display}, time::Instant, usize};
@@ -17,6 +18,7 @@ use bubble_sort::sort as bubble_sort;
 use insertion_sort::sort as insertion_sort;
 use selection_sort::sort as selection_sort;
 use quick_sort::sort as quick_sort;
+use heap_sort::sort as heap_sort;
 
 
 fn get_random_vector(n : usize) -> Vec<usize> {
@@ -42,7 +44,7 @@ where T : PartialOrd {
     true
 }
 
-fn test_binsearch<T>(array : &Vec<T>, what : &T, print_array : bool)
+fn binsearch_item<T>(array : &Vec<T>, what : &T, print_array : bool)
 where T : PartialEq + PartialOrd + Debug + Display {
     
     if print_array {
@@ -61,6 +63,14 @@ where T : PartialEq + PartialOrd + Debug + Display {
     else{
         println!("Item {} was not found!", what);
     }
+}
+
+fn test_binsearch(num: usize, print_array: bool) {
+    let mut array = get_random_vector(num);
+    array.sort();
+    let mut rng = rand::thread_rng();
+    let what = rng.gen_range(0, num);
+    binsearch_item(&array, &what, print_array);
 }
 
 fn test_sort_method<T>(f_sort : fn(array : &mut Vec<T>), array : &mut Vec<T>, print_array : bool)
@@ -83,13 +93,14 @@ where T : Debug + PartialOrd {
 
 fn test_sort_method_for_random_array(f_sort : fn(array : &mut Vec<usize>), num : usize, print_array : bool) {
     let mut array = get_random_vector(num);
+    println!("{:?}", array);
     test_sort_method(f_sort, &mut array, print_array)
 }
 
 
 fn main() {
 
-    let is_debug_mode = false;
+    let is_debug_mode = true;
     // Test Sorting algorithms
     let num : usize = if is_debug_mode { 10 } else { 10000 };
     let print_array = is_debug_mode;
@@ -105,12 +116,11 @@ fn main() {
     println!("Quick Sort");
     test_sort_method_for_random_array(quick_sort, num, print_array);
 
+    println!("Heap Sort");
+    test_sort_method_for_random_array(heap_sort, num, print_array);
+
     // Test Binary search
     let num = 100;
     println!("Binary search");
-    let mut array = get_random_vector(num);
-    array.sort();
-    let mut rng = rand::thread_rng();
-    let what = rng.gen_range(0, num);
-    test_binsearch(&array, &what, print_array);
+    test_binsearch(num, print_array);
 }
