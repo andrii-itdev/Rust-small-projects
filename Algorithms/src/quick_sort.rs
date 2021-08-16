@@ -29,8 +29,8 @@ where T : Clone + PartialOrd {
 
 fn quick_sort<T>(arr : &mut Vec<T>, begin : usize, end : usize, p_index : usize)
 where T : PartialOrd + Clone {
-    if end - begin == 2 && arr[begin] > arr[end] {
-            swap(arr, begin, end);
+    if end - begin == 2 && arr[begin] > arr[end - 1] {
+            swap(arr, begin, end - 1);
     }
     else if end - begin > 2 {
         let p = partition(begin, end, arr, p_index);

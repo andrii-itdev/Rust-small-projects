@@ -93,34 +93,34 @@ where T : Debug + PartialOrd {
 
 fn test_sort_method_for_random_array(f_sort : fn(array : &mut Vec<usize>), num : usize, print_array : bool) {
     let mut array = get_random_vector(num);
-    println!("{:?}", array);
+    if print_array {
+        println!("{:?}", array);
+    }
     test_sort_method(f_sort, &mut array, print_array)
 }
 
 
 fn main() {
-
     let is_debug_mode = true;
     // Test Sorting algorithms
     let num : usize = if is_debug_mode { 10 } else { 10000 };
-    let print_array = is_debug_mode;
 
     println!("Bubble Sort");
-    test_sort_method_for_random_array(bubble_sort, num, print_array);
+    test_sort_method_for_random_array(bubble_sort, num, is_debug_mode);
     println!("Merge Sort");
-    test_sort_method_for_random_array(merge_sort, num, print_array);
+    test_sort_method_for_random_array(merge_sort, num, is_debug_mode);
     println!("Insert Sort");
-    test_sort_method_for_random_array(insertion_sort, num, print_array);
+    test_sort_method_for_random_array(insertion_sort, num, is_debug_mode);
     println!("Selection Sort");
-    test_sort_method_for_random_array(selection_sort, num, print_array);
+    test_sort_method_for_random_array(selection_sort, num, is_debug_mode);
     println!("Quick Sort");
-    test_sort_method_for_random_array(quick_sort, num, print_array);
+    test_sort_method_for_random_array(quick_sort, num, is_debug_mode);
 
     println!("Heap Sort");
-    test_sort_method_for_random_array(heap_sort, num, print_array);
+    test_sort_method_for_random_array(heap_sort, num, is_debug_mode);
 
     // Test Binary search
     let num = 100;
     println!("Binary search");
-    test_binsearch(num, print_array);
+    test_binsearch(num, is_debug_mode);
 }
